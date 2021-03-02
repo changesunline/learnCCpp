@@ -1,0 +1,5 @@
+project(learnCCpp C)
+
+set(CMAKE_C_STANDARD 11)
+
+add_executable(learnCCpp main.c)
