@@ -8,4 +8,5 @@
 void main(void) {
     printf("FactorialByItarator(5): %d\n", FactorialByItarator(5));
     printf("Factorial(5): %d\n", Factorial(5));
+    printf("输出完成！")
 }
