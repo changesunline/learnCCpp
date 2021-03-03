@@ -8,5 +8,5 @@
 void main(void) {
     printf("FactorialByItarator(5): %d\n", FactorialByItarator(5));
     printf("Factorial(5): %d\n", Factorial(5));
-    printf("git设置完成！")
+    printf("clion的github设置完成！");
 }
