@@ -44,7 +44,7 @@ project(test1 C)
 
 set(CMAKE_C_STANDARD 11)
 
-#add_executable(test1 01_main.c 02_makeHeaders.c)
+include_directories(include)
 
 file(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*.c")
 foreach(file ${files})

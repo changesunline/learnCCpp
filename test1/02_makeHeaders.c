@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include "include/factorial.h"
+#include <factorial.h>
 
 void main(void) {
     printf("FactorialByItarator(5): %d\n", FactorialByItarator(5));
