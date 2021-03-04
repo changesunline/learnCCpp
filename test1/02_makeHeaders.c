@@ -8,5 +8,5 @@
 void main(void) {
     printf("FactorialByItarator(5): %d\n", FactorialByItarator(5));
     printf("Factorial(5): %d\n", Factorial(5));
-    printf("clion的github设置完成！");
+    printf("办公室的clion设置完成！");
 }
