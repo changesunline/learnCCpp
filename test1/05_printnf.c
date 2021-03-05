@@ -4,9 +4,12 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+// 宏调用宏
+#define PRINTFLN(value, ...) printf(value"\n", ##__VA_ARGS__)
+#define PRINTFFILELINE_KV(value) PRINTFLN(#value": %d", value)
+
 //宏函数 - 打印当前文件路径：运行的行 运行的函数
 #define PRINTFFILELINE(format, ...) printf("("__FILE__": %d) %s: "format"\n", __LINE__, __FUNCTION__, ##__VA_ARGS__)
-#define PRINTFFILELINE_KV(value) PRINTFFILELINE(#value": %d", value)
 
 //宏函数
 #define PRINTLNF(format, ...) printf(format"\n", ##__VA_ARGS__)
@@ -31,5 +34,6 @@ void main(void) {
 
 //    PRINTFFILELINE("你好 %s", "zhangsan");
 
-//    PRINTFFILELINE_KV();
+    int abc = 3;
+    PRINTFFILELINE_KV(++abc);
 }
