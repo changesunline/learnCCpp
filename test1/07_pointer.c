@@ -14,5 +14,4 @@ void main(void) {
     PRINT_HEX(&a);
     PRINT_INT(a);
     PRINT_INT(*p);
-    PRINT_INT(*p);
 }
