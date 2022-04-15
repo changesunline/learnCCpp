@@ -28,6 +28,8 @@ void main(void) {
 //    PRINT_INT(a);
     int a = 5;
     int *p = &a;
-    *p = 2;
-    PRINT_HEX(p);
+    int **pp = &p;
+//    *p = 2;
+    PRINT_HEX(**pp);
+    PRINT_HEX(a);
 }
