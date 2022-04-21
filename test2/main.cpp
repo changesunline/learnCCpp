@@ -2,10 +2,22 @@
 
 #define maxSize 100000
 
+// 结构体定义 - 数组
+typedef struct {
+    int data[maxSize];
+    int length;
+}Sqlist;
+// 结构体定义 - 单链表
 typedef struct LNode {
     int data;
     struct LNode *next;
 }LNode;
+// 结构体定义 - 双链表
+typedef struct DLNode {
+    int data;
+    struct DLNode *prior;
+    struct DLNode *next;
+}DLNode;
 
 /**
  * 天勤 第2章-线性表
@@ -104,4 +116,23 @@ void createListRBottom(LNode *&C, int a[], int n) {
     }
 }
 
-// 删除
+// 删除结点
+int findAndDelete(LNode *&C, int x) {
+    LNode *p, *q;
+    p = C;
+    while (p->next != NULL) {
+        if (p->next->data == x) break;
+        p = p->next;
+    }
+    if (p->next == NULL) {
+        return 0;
+    } else {
+        q = p->next;
+        p->next = p->next->next;
+        free(q);
+        return 1;
+    }
+}
+
+
+// =============================================================== 双链表操作 =======================================================================
