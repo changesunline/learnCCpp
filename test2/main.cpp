@@ -267,8 +267,82 @@ int popLS(LSNode *lst, int &x) {
     if (lst->next == NULL)
         return 0;
     p = lst->next;
-    x = p->data;
+    x = p->data;=
     lst->next = p->next;
     free(p);
         return 1;
+}
+
+// ============================================================ 栈的应用（非常精彩的算法） =============================================================
+// 1、顺序栈 - 判断一组字符串的括号是否成对匹配
+int expMatch(char exp[], int n) {
+    // 初始化一个顺序栈
+    char stack[maxSize];
+    int top = -1;
+    // 记录出现的括号
+    int i;
+    for (i=0; i<n; ++i) {
+        if (exp[i] == '(') {stack[++top] = exp[i];}
+        if (exp[i] == ')') {
+            if (top == -1)
+                return 0;
+            else
+                --top;
+        }
+    }
+    // 栈空说明括号都成对出现，否则相反
+    if (top == -1)
+        return 1;
+    else
+        return 0;
+}
+// 2、顺序栈 - 后缀式的计算
+int expOp(int a, char op, int b) { //运算函数
+    if (op == '+') return a+b;
+    if (op == '-') return a-b;
+    if (op == '*') return a*b;
+    if (op == '/') {
+        if (b == 0) {
+            cout << "ERROR" << endl;
+            return 0;
+        } else {
+            return a/b;
+        }
+    }
+}
+int expComput(char exp[]) { //计算函数
+    int i, a, b, c; //a、b记录运算数字，c记录结果
+    char op; //记录运算符
+    int stack[maxSize]; int top = -1; //初始化一个栈
+    for (i=0; exp[i]!='\0'; ++i) {
+        if (exp[i] >= '0' && exp[i] <= '9') {
+            stack[++top] = exp[i] - '0';
+        } else {
+            op = exp[i];
+            a = stack[top--];
+            b = stack[top--];
+            c = expOp(a,op,b);
+            stack[++top] = c;
+        }
+    }
+    return stack[top];
+}
+// 3、链栈 - 不带头结点的单链表储存链栈
+void initNHStack(LSNode *&lst) { //初始化链栈
+    lst = NULL;
+}
+int isEmptyNHStack(LSNode *lst) { //判断链栈是否为空
+    if (lst == NULL) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+void pushNHStack(LSNode *&lst, int x) {
+    LSNode *p;
+    p->next = NULL;
+    p = (LSNode *)malloc(sizeof(LSNode));
+    p->data = x;
+    p->next = lst;
+    lst = p;
 }
